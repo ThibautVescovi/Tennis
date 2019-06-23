@@ -1,4 +1,4 @@
-package main.tve.kata.tennis.core;
+package src.main.tve.kata.tennis.core;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -81,11 +81,71 @@ public class Game {
                 scores.put(player, Score.THIRTY);
                 break;
             case THIRTY:
-                scores.put(player, Score.FORTY);
+                if (isOpponentForty(player)) {
+                    deuce();
+                } else {
+                    scores.put(player, Score.FORTY);
+                }
                 break;
             case FORTY:
+                if (isOpposentAdvantage(player)) {
+                    deuce();
+                } else {
+                    player.setWinner(true);
+                }
+                break;
+            case DEUCE:
+                setPlayerAdvantage(player);
+                break;
+            case ADVANTAGE:
                 player.setWinner(true);
                 break;
+        }
+    }
+
+    /**
+     * Test if the opponent has 40 points
+     * @param player the player who scored
+     * @return his opponent
+     */
+    private boolean isOpponentForty(Player player){
+        if(player.equals(playerOne)){
+            return scores.get(playerTwo).equals(Score.FORTY);
+        }
+        return scores.get(playerOne).equals(Score.FORTY);
+    }
+
+    /**
+     * Test if the opponent has advantage
+     * @param player the player who scored
+     * @return his opponent
+     */
+    private boolean isOpposentAdvantage(Player player){
+        if(player.equals(playerOne)){
+            return scores.get(playerTwo).equals(Score.ADVANTAGE);
+        }
+        return scores.get(playerOne).equals(Score.ADVANTAGE);
+    }
+
+    /**
+     * Set DEUCE score to both players
+     */
+    private void deuce() {
+        scores.put(playerOne,Score.DEUCE);
+        scores.put(playerTwo,Score.DEUCE);
+    }
+
+    /**
+     * Manage ADVANTAGE situation in case of DEUCE
+     * @param player the player who scored
+     */
+    private void setPlayerAdvantage(Player player){
+        if(player.equals(playerOne)){
+            scores.put(playerOne,Score.ADVANTAGE);
+            scores.put(playerTwo,Score.FORTY);
+        }else{
+            scores.put(playerOne,Score.FORTY);
+            scores.put(playerTwo,Score.ADVANTAGE);
         }
     }
 

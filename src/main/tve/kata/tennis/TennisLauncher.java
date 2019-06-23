@@ -1,6 +1,6 @@
-package main.tve.kata.tennis;
+package src.main.tve.kata.tennis;
 
-import main.tve.kata.tennis.core.Game;
+import src.main.tve.kata.tennis.core.Game;
 
 import java.util.Scanner;
 
@@ -11,10 +11,14 @@ import java.util.Scanner;
 public class TennisLauncher {
 
     public static void main(String[] args) {
-        System.out.println("Player one name: ");
+        /*System.out.println("Player one name: ");
         String playerOneName = new Scanner(System.in).nextLine();
         System.out.println("Player two name: ");
-        String playerTwoName = new Scanner(System.in).nextLine();
+        String playerTwoName = new Scanner(System.in).nextLine();*/
+
+        String playerOneName ="Joueur 1";
+        String playerTwoName ="Joueur 2";
+
         System.out.println("Press enter to start the game...");
         new Scanner(System.in).nextLine();
 

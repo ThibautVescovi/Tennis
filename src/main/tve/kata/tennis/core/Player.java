@@ -1,11 +1,11 @@
-package main.tve.kata.tennis.core;
+package src.main.tve.kata.tennis.core;
 
 public class Player {
 
     private String name;
     private boolean winner;
 
-    public Player(String name){
+    public Player(String name) {
         this.setName(name);
         this.setWinner(false);
     }
@@ -29,5 +29,19 @@ public class Player {
     @Override
     public String toString() {
         return name;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (!Player.class.isAssignableFrom(obj.getClass())) {
+            return false;
+        }
+        final Player other = (Player) obj;
+        if (this.name.equals(other.getName()))
+            return true;
+        return false;
     }
 }
