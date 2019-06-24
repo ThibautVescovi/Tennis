@@ -1,5 +1,8 @@
 package src.main.tve.kata.tennis.core;
 
+/**
+ * Enum to manage game score
+ */
 public enum Score {
     LOVE("0"),
     FIFTEEN("15"),

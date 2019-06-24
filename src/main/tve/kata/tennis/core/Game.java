@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.Random;
 
 /**
- * Game class manage start of game, point and end game
+ * Game class manage start of game and the point
  */
 public class Game {
 
@@ -17,7 +17,7 @@ public class Game {
     /**
      * Game constructor
      */
-    public Game(Player playerOne, Player playerTwo, Map<Player, Score> scores){
+    public Game(Player playerOne, Player playerTwo, Map<Player, Score> scores) {
         this.playerOne = playerOne;
         this.playerTwo = playerTwo;
         this.scores = scores;
@@ -25,6 +25,7 @@ public class Game {
 
     /**
      * Determine witch player win this point
+     *
      * @return point winner
      */
     public Player getPointWinner() {
@@ -33,22 +34,25 @@ public class Game {
 
     /**
      * Check if there is a winner
+     *
      * @return true if there is a winner
      */
-    public boolean isWinner(){
+    public boolean isWinner() {
         return playerOne.isWinnerGame() || playerTwo.isWinnerGame();
     }
 
     /**
      * Get the winner player
+     *
      * @return the player who win
      */
-    public Player getWinner(){
+    public Player getWinner() {
         return playerOne.isWinnerGame() ? playerOne : playerTwo;
     }
 
     /**
      * Change the score of the winning point player
+     *
      * @param player player who won the point
      */
     public void changeScore(Player player) {
@@ -86,11 +90,12 @@ public class Game {
 
     /**
      * Test if the opponent has 40 points
+     *
      * @param player the player who scored
      * @return his opponent
      */
-    private boolean isOpponentForty(Player player){
-        if(player.equals(playerOne)){
+    private boolean isOpponentForty(Player player) {
+        if (player.equals(playerOne)) {
             return scores.get(playerTwo).equals(Score.FORTY);
         }
         return scores.get(playerOne).equals(Score.FORTY);
@@ -98,11 +103,12 @@ public class Game {
 
     /**
      * Test if the opponent has advantage
+     *
      * @param player the player who scored
      * @return his opponent
      */
-    private boolean isOpposentAdvantage(Player player){
-        if(player.equals(playerOne)){
+    private boolean isOpposentAdvantage(Player player) {
+        if (player.equals(playerOne)) {
             return scores.get(playerTwo).equals(Score.ADVANTAGE);
         }
         return scores.get(playerOne).equals(Score.ADVANTAGE);
@@ -112,25 +118,26 @@ public class Game {
      * Set DEUCE score to both players
      */
     private void deuce() {
-        scores.put(playerOne,Score.DEUCE);
-        scores.put(playerTwo,Score.DEUCE);
+        scores.put(playerOne, Score.DEUCE);
+        scores.put(playerTwo, Score.DEUCE);
     }
 
     /**
      * Manage ADVANTAGE situation in case of DEUCE
+     *
      * @param player the player who scored
      */
-    private void setPlayerAdvantage(Player player){
-        if(player.equals(playerOne)){
-            scores.put(playerOne,Score.ADVANTAGE);
-            scores.put(playerTwo,Score.FORTY);
-        }else{
-            scores.put(playerOne,Score.FORTY);
-            scores.put(playerTwo,Score.ADVANTAGE);
+    private void setPlayerAdvantage(Player player) {
+        if (player.equals(playerOne)) {
+            scores.put(playerOne, Score.ADVANTAGE);
+            scores.put(playerTwo, Score.FORTY);
+        } else {
+            scores.put(playerOne, Score.FORTY);
+            scores.put(playerTwo, Score.ADVANTAGE);
         }
     }
 
-
+    // GETTERS && SETTERS
 
     public Map<Player, Score> getScores() {
         return scores;

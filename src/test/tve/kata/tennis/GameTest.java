@@ -1,9 +1,8 @@
 package src.test.tve.kata.tennis;
 
 import org.junit.Before;
-import src.main.tve.kata.tennis.core.Game;
-
 import org.junit.Test;
+import src.main.tve.kata.tennis.core.Game;
 import src.main.tve.kata.tennis.core.Match;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -14,29 +13,29 @@ public class GameTest {
     private Game game;
 
     @Before
-    public void init(){
-        Match match = new Match("PlayerTest1","PlayerTest2");
+    public void init() {
+        Match match = new Match("PlayerTest1", "PlayerTest2");
         game = match.getGame();
     }
 
     @Test
-    public void GameInitTest(){
-        assertEquals("PlayerTest1",game.getPlayerOne().getName());
-        assertEquals("PlayerTest2",game.getPlayerTwo().getName());
+    public void GameInitTest() {
+        assertEquals("PlayerTest1", game.getPlayerOne().getName());
+        assertEquals("PlayerTest2", game.getPlayerTwo().getName());
         game.getScores().forEach((player, score) -> {
-            assertEquals("0",score.toString());
+            assertEquals("0", score.toString());
         });
 
     }
 
-   @Test
-    public void PlayerOneScoreTest(){
+    @Test
+    public void PlayerOneScoreTest() {
         game.changeScore(game.getPlayerOne());
-        assertEquals("15",game.getScores().get(game.getPlayerOne()).toString());
+        assertEquals("15", game.getScores().get(game.getPlayerOne()).toString());
     }
 
     @Test
-    public void PlayerOneWinTest(){
+    public void PlayerOneWinTest() {
         game.changeScore(game.getPlayerOne());// 15-0
         game.changeScore(game.getPlayerOne());// 30-0
         game.changeScore(game.getPlayerOne());// 40-0
@@ -46,7 +45,7 @@ public class GameTest {
     }
 
     @Test
-    public void DeusAndAdvantageTest(){
+    public void DeusAndAdvantageTest() {
         game.changeScore(game.getPlayerOne());// 15-0
         game.changeScore(game.getPlayerOne());// 30-0
         game.changeScore(game.getPlayerOne());// 40-0
@@ -61,7 +60,6 @@ public class GameTest {
         assertTrue(game.getPlayerOne().isWinnerGame());
         assertEquals("PlayerTest1", game.getPlayerOne().getName());
     }
-
 
 
 }

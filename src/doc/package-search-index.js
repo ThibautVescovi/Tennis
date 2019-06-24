@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"src.main.tve.kata.tennis"},{"l":"src.main.tve.kata.tennis.core"},{"l":"src.test.tve.kata.tennis"}]

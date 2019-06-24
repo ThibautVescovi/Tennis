@@ -1,17 +1,25 @@
 package src.main.tve.kata.tennis.core;
 
+/**
+ * Manage player
+ */
 public class Player {
 
     private String name;
     private boolean winnerGame;
     private boolean winnerSet;
+    private boolean winnerTie;
 
+    // Constructor
     public Player(String name) {
         this.setName(name);
         this.setWinnerGame(false);
         this.setWinnerSet(false);
+        this.setWinnerTie(false);
     }
 
+
+    // GETTERS && SETTERS
     public boolean isWinnerGame() {
         return winnerGame;
     }
@@ -35,6 +43,16 @@ public class Player {
     public void setName(String name) {
         this.name = name;
     }
+
+    public boolean isWinnerTie() {
+        return winnerTie;
+    }
+
+    public void setWinnerTie(boolean winnerTie) {
+        this.winnerTie = winnerTie;
+    }
+
+    //OVERRIDE
 
     @Override
     public String toString() {
