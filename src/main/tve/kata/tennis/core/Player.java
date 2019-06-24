@@ -3,19 +3,29 @@ package src.main.tve.kata.tennis.core;
 public class Player {
 
     private String name;
-    private boolean winner;
+    private boolean winnerGame;
+    private boolean winnerSet;
 
     public Player(String name) {
         this.setName(name);
-        this.setWinner(false);
+        this.setWinnerGame(false);
+        this.setWinnerSet(false);
     }
 
-    public boolean isWinner() {
-        return winner;
+    public boolean isWinnerGame() {
+        return winnerGame;
     }
 
-    public void setWinner(boolean winner) {
-        this.winner = winner;
+    public void setWinnerGame(boolean winnerGame) {
+        this.winnerGame = winnerGame;
+    }
+
+    public boolean isWinnerSet() {
+        return winnerSet;
+    }
+
+    public void setWinnerSet(boolean winnerSet) {
+        this.winnerSet = winnerSet;
     }
 
     public String getName() {

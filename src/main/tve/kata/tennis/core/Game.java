@@ -1,6 +1,5 @@
 package src.main.tve.kata.tennis.core;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
@@ -10,40 +9,18 @@ import java.util.Random;
 public class Game {
 
     // This map will manage Player and their score
-    private Map<Player, Score> scores = new HashMap<>();
+    private Map<Player, Score> scores;
 
+    // Players
     private Player playerOne, playerTwo;
 
     /**
-     * Game constructor, init player and score
-     * @param playerNameOne
-     * @param playerNameTwo
+     * Game constructor
      */
-    public Game(String playerNameOne,String playerNameTwo){
-        initMatch(playerNameOne, playerNameTwo);
-    }
-
-    /**
-     * Tennis Game Manager
-     */
-    public void run(){
-        while (!isWinner()){
-            displayScore();
-            changeScore(getPointWinner());
-        }
-
-        System.out.println("And the winner iiiiiiiiiiis : " + getWinner());
-    }
-    /**
-     * Init score map with player and score set to 0
-     * @param playerNameOne player one name
-     * @param playerNameTwo player two name
-     */
-    private void initMatch(String playerNameOne, String playerNameTwo){
-        playerOne = new Player(playerNameOne);
-        playerTwo = new Player(playerNameTwo);
-        scores.put(playerOne,Score.LOVE);
-        scores.put(playerTwo,Score.LOVE);
+    public Game(Player playerOne, Player playerTwo, Map<Player, Score> scores){
+        this.playerOne = playerOne;
+        this.playerTwo = playerTwo;
+        this.scores = scores;
     }
 
     /**
@@ -56,14 +33,18 @@ public class Game {
 
     /**
      * Check if there is a winner
-     * @return
+     * @return true if there is a winner
      */
-    private boolean isWinner(){
-        return playerOne.isWinner() || playerTwo.isWinner();
+    public boolean isWinner(){
+        return playerOne.isWinnerGame() || playerTwo.isWinnerGame();
     }
 
-    private String getWinner(){
-        return playerOne.isWinner() ? playerOne.getName() : playerTwo.getName();
+    /**
+     * Get the winner player
+     * @return the player who win
+     */
+    public Player getWinner(){
+        return playerOne.isWinnerGame() ? playerOne : playerTwo;
     }
 
     /**
@@ -91,14 +72,14 @@ public class Game {
                 if (isOpposentAdvantage(player)) {
                     deuce();
                 } else {
-                    player.setWinner(true);
+                    player.setWinnerGame(true);
                 }
                 break;
             case DEUCE:
                 setPlayerAdvantage(player);
                 break;
             case ADVANTAGE:
-                player.setWinner(true);
+                player.setWinnerGame(true);
                 break;
         }
     }
@@ -149,28 +130,30 @@ public class Game {
         }
     }
 
-    /**
-     * Display current score
-     */
-    private void displayScore(){
 
-        scores.forEach((player, score) -> {
-            System.out.println(player + "[" + score + "]");
-
-        });
-        System.out.println(" ------- ");
-    }
 
     public Map<Player, Score> getScores() {
         return scores;
+    }
+
+    public void setScores(Map<Player, Score> scores) {
+        this.scores = scores;
     }
 
     public Player getPlayerOne() {
         return playerOne;
     }
 
+    public void setPlayerOne(Player playerOne) {
+        this.playerOne = playerOne;
+    }
+
     public Player getPlayerTwo() {
         return playerTwo;
+    }
+
+    public void setPlayerTwo(Player playerTwo) {
+        this.playerTwo = playerTwo;
     }
 
 

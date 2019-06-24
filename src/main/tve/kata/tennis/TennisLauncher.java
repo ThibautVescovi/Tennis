@@ -1,6 +1,6 @@
 package src.main.tve.kata.tennis;
 
-import src.main.tve.kata.tennis.core.Game;
+import src.main.tve.kata.tennis.core.Match;
 
 import java.util.Scanner;
 
@@ -21,8 +21,7 @@ public class TennisLauncher {
 
         System.out.println("Press enter to start the game...");
         new Scanner(System.in).nextLine();
-
-        Game game = new Game(playerOneName, playerTwoName);
-        game.run();
+        Match match = new Match(playerOneName, playerTwoName);
+        match.run();
     }
 }

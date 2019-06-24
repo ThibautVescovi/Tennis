@@ -2,3 +2,4 @@
 *.xml
 .idea/tennis.iml
 *.class
+output/production/tennis/META-INF/tennis.kotlin_module
